@@ -14,11 +14,11 @@
       </el-form-item>
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
-        <el-buttoncen
+        <el-button
           v-if="isAuth('product:brand:save')"
           type="primary"
           @click="addOrUpdateHandle()"
-          >新增</el-buttoncen
+          >新增</el-button
         >
         <el-button
           v-if="isAuth('product:brand:delete')"
