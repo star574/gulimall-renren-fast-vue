@@ -180,7 +180,7 @@ export default {
     /* 更新品牌状态 */
     updateBrandStatus(data) {
       this.$http({
-        url: this.$http.adornUrl('/product/brand/update'),
+        url: this.$http.adornUrl('/product/brand/update/show-status'),
         method: 'post',
         data: this.$http.adornData({ brandId: data.brandId, showStatus: data.showStatus }, false)
       }).then(({ res }) => {
