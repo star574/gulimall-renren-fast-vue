@@ -122,6 +122,7 @@ export default {
     },
     // 感知树节点被点击
     treenodeclick(data, node, component) {
+      console.log('父节点感知到子组件事件', data, node, component)
       if (node.level === 3) {
         this.catId = data.catId
         this.getDataList() // 重新查询

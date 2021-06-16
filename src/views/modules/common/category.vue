@@ -4,6 +4,7 @@
       :data="data"
       :props="defaultProps"
       node-key="catId"
+      @node-click="nodeClick"
     >
  </el-tree>
 </template>
@@ -37,6 +38,11 @@ export default {
       }).catch((err) => {
         console.log(err)
       })
+    },
+    nodeClick(data, node, component) {
+      console.log('子组建点击事件 ', data, node, component)
+      /* 向父组件传递事件及数据 tree-node-click 事件名 */
+      this.$emit('tree-node-click', data, node, component)
     }
   }
 }
