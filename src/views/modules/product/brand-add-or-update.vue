@@ -18,8 +18,8 @@
     v-model="dataForm.showStatus"
     active-color="#13ce66"
     inactive-color="#ff4949"
-    active-value="1"
-    inactive-value="0">
+    :active-value="1"
+    :inactive-value="0">
   </el-switch>
     </el-form-item>
     <el-form-item label="检索首字母" prop="firstLetter">
@@ -111,6 +111,7 @@ export default {
               this.dataForm.showStatus = data.brand.showStatus
               this.dataForm.firstLetter = data.brand.firstLetter
               this.dataForm.sort = data.brand.sort
+              console.log(this.dataForm.showStatus)
             }
           })
         }

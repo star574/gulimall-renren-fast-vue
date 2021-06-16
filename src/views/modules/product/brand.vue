@@ -183,7 +183,7 @@ export default {
         url: this.$http.adornUrl('/product/brand/update/show-status'),
         method: 'post',
         data: this.$http.adornData({ brandId: data.brandId, showStatus: data.showStatus }, false)
-      }).then(({ res }) => {
+      }).then((res) => {
         this.$message.success('修改成功')
       }).catch((res) => {
         this.$message.error(res.data.msg)
