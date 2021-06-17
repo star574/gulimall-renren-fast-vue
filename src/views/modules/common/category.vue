@@ -33,7 +33,7 @@ export default {
         url: this.$http.adornUrl(`/product/category/list/tree/${info}`),
         method: 'get'
       }).then((result) => {
-        this.data = result.data.categoryServiceList
+        this.data = result.data.data
         this.loading = false
       }).catch((err) => {
         console.log(err)

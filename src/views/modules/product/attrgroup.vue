@@ -146,6 +146,7 @@ export default {
       }).then(({ data }) => {
         if (data && data.code === 0) {
           this.dataList = data.page.list
+          console.log('list=', data.page.list)
           this.totalPage = data.page.totalCount
         } else {
           this.dataList = []
@@ -172,6 +173,7 @@ export default {
     // 新增 / 修改
     addOrUpdateHandle(id) {
       this.addOrUpdateVisible = true
+      /* 组件完全渲染以后 */
       this.$nextTick(() => {
         this.$refs.addOrUpdate.init(id)
       })
