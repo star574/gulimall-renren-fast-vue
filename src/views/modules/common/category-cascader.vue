@@ -65,14 +65,12 @@ export default {
         url: this.$http.adornUrl('/product/category/list/tree'),
         method: 'get'
       }).then(({ data }) => {
-        debugger
         this.categorys = data.data
       })
     }
   },
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {
-    debugger
     this.getCategorys()
   }
 }
