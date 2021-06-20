@@ -1,4 +1,3 @@
-/* eslint-disable */
 <template>
   <div>
     <el-row>
@@ -128,12 +127,11 @@
                     type="hidden"
                     v-show="false"
                   ></el-input>
-                  <el-checkbox-group
-                  v-if="dataResp.saleAttrs[aidx].valueSelect !== ''"
-                  v-model="dataResp.tempSaleAttrs[aidx].attrValues">
+                  <el-checkbox-group v-model="dataResp.tempSaleAttrs[aidx].attrValues">
                     <el-checkbox
-                      v-for="val in dataResp.saleAttrs[aidx].valueSelect.split(';')"
+                      v-if="dataResp.saleAttrs[aidx].valueSelect !== ''"
                       :label="val"
+                      v-for="val in dataResp.saleAttrs[aidx].valueSelect.split(';')"
                       :key="val"
                     ></el-checkbox>
                     <div style="margin-left:20px;display:inline">
@@ -351,6 +349,7 @@
 import CategoryCascader from '../common/category-cascader'
 import BrandSelect from '../common/brand-select'
 import MultiUpload from '@/components/upload/multiUpload'
+import PubSub from 'pubsub-js'
 export default {
   // import引入的组件需要注入到对象中才能使用
   components: { CategoryCascader, BrandSelect, MultiUpload },
@@ -786,11 +785,9 @@ export default {
   created() {},
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    // eslint-disable-next-line no-undef
     this.catPathSub = PubSub.subscribe('catPath', (msg, val) => {
       this.spu.catalogId = val[val.length - 1]
     })
-    // eslint-disable-next-line no-undef
     this.brandIdSub = PubSub.subscribe('brandId', (msg, val) => {
       this.spu.brandId = val
     })
@@ -801,9 +798,7 @@ export default {
   beforeUpdate() {}, // 生命周期 - 更新之前
   updated() {}, // 生命周期 - 更新之后
   beforeDestroy() {
-    // eslint-disable-next-line no-undef
     PubSub.unsubscribe(this.catPathSub)
-    // eslint-disable-next-line no-undef
     PubSub.unsubscribe(this.brandIdSub)
   }, // 生命周期 - 销毁之前
   destroyed() {}, // 生命周期 - 销毁完成

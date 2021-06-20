@@ -33,8 +33,8 @@
 
 <script>
 // 这里可以导入其他文件（比如：组件，工具js，第三方插件js，json文件，图片文件等等）
-// eslint-disable-next-line no-irregular-whitespace
 // 例如：import 《组件名称》 from '《组件路径》';
+import PubSub from 'pubsub-js'
 import CategoryCascader from '../common/category-cascader'
 import BrandSelect from '../common/brand-select'
 import Spuinfo from './spuinfo'
@@ -58,7 +58,6 @@ export default {
 
     }
   },
-  // eslint-disable-next-line no-irregular-whitespace
   // 计算属性 类似于data概念
   computed: {},
   // 监控data中的数据变化
@@ -70,42 +69,26 @@ export default {
       this.PubSub.publish('dataForm', this.dataForm)
     }
   },
-  // eslint-disable-next-line no-irregular-whitespace
   // 生命周期 - 创建完成（可以访问当前this实例）
   created() {},
-  // eslint-disable-next-line no-irregular-whitespace
   // 生命周期 - 挂载完成（可以访问DOM元素）
   mounted() {
-    // eslint-disable-next-line no-irregular-whitespace
-        // eslint-disable-next-line no-undef
     this.catPathSub = PubSub.subscribe('catPath', (msg, val) => {
       this.dataForm.catelogId = val[val.length - 1]
     })
-    // eslint-disable-next-line no-irregular-whitespace
-        // eslint-disable-next-line no-undef
     this.brandIdSub = PubSub.subscribe('brandId', (msg, val) => {
       this.dataForm.brandId = val
     })
   },
-  // eslint-disable-next-line no-irregular-whitespace
   beforeCreate() {}, // 生命周期 - 创建之前
-  // eslint-disable-next-line no-irregular-whitespace
   beforeMount() {}, // 生命周期 - 挂载之前
-  // eslint-disable-next-line no-irregular-whitespace
   beforeUpdate() {}, // 生命周期 - 更新之前
-  // eslint-disable-next-line no-irregular-whitespace
   updated() {}, // 生命周期 - 更新之后
   beforeDestroy() {
-    // eslint-disable-next-line no-undef
     PubSub.unsubscribe(this.catPathSub)
-    // eslint-disable-next-line no-undef
     PubSub.unsubscribe(this.brandIdSub)
-  },
-  // eslint-disable-next-line no-irregular-whitespace
-  // 生命周期 - 销毁之前
-  destroyed() {},
-  // eslint-disable-next-line no-irregular-whitespace
-  // 生命周期 - 销毁完成
+  }, // 生命周期 - 销毁之前
+  destroyed() {}, // 生命周期 - 销毁完成
   activated() {} // 如果页面有keep-alive缓存功能，这个函数会触发
 }
 </script>
