@@ -25,7 +25,7 @@
         </el-form>
       </el-col>
       <el-col :span="24">
-        <spuinfo :catId="catId"></spuinfo>
+        <spuInfo :catId="catId"></spuInfo>
       </el-col>
     </el-row>
   </div>
@@ -37,10 +37,10 @@
 import PubSub from 'pubsub-js'
 import CategoryCascader from '../common/category-cascader'
 import BrandSelect from '../common/brand-select'
-import Spuinfo from './spuinfo'
+import spuInfo from './spuinfo'
 export default {
   // import引入的组件需要注入到对象中才能使用
-  components: { CategoryCascader, Spuinfo, BrandSelect },
+  components: { CategoryCascader, spuInfo, BrandSelect },
   props: {},
   data() {
     // 这里存放数据

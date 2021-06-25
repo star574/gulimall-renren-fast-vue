@@ -49,6 +49,7 @@
 </template>
 
 <script>
+import PubSub from 'pubsub-js'
 export default {
   data() {
     return {
@@ -142,7 +143,6 @@ export default {
     addOrUpdateHandle(id) {}
   },
   mounted() {
-    // eslint-disable-next-line no-undef
     this.dataSub = PubSub.subscribe('dataForm', (msg, val) => {
       console.log('~~~~~', val)
       this.dataForm = val
@@ -150,7 +150,6 @@ export default {
     })
   },
   beforeDestroy() {
-    // eslint-disable-next-line no-undef
     PubSub.unsubscribe(this.dataSub)
   }
 }
