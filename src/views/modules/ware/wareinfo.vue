@@ -28,6 +28,7 @@
         align="center"
         label="id">
       </el-table-column>
+
       <el-table-column
         prop="name"
         header-align="center"
